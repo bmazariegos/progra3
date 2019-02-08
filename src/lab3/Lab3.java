@@ -1,7 +1,8 @@
 /**
  * @author BRYAN ESTUARDO MAZARIEGOS DAVILA
  *  0901-17-1001
- *  Control de sueldos de los empleados en planilla y total por cada deparamento 
+ *  Control de sueldos de los empleados en planilla y total por cada deparamento
+ * prueba de actualizacion
  */
 package lab3;
 
