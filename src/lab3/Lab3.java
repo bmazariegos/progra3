@@ -1,7 +1,7 @@
 /**
  * @author BRYAN ESTUARDO MAZARIEGOS DAVILA
  *  0901-17-1001
- *  Control de sueldos de los empleados en planilla y total por cada deparamento
+ *  Control de sueldos de los empleados en planilla y total por cada deparamento 
  */
 package lab3;
 
@@ -95,7 +95,7 @@ public class Lab3 extends javax.swing.JFrame {
             }
         });
 
-       javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +230,7 @@ public class Lab3 extends javax.swing.JFrame {
         for(IFila=0;IFila<=9;IFila++)
         {
             if(StrPlanilla[IFila][0].equals(Integer.toString(ICon))){
-                 StrTotalDepar[ICon][1] += Double.parseDouble(StrPlanilla[IFila][6]);
+                StrTotalDepar[ICon][1] += Double.parseDouble(StrPlanilla[IFila][6]);
                 ITotales = StrTotalDepar[ICon][1];
             }
         }
@@ -266,7 +266,7 @@ public class Lab3 extends javax.swing.JFrame {
 
             },
             new String [] {
-                 "Departamento", "Nombre  empleado", "Sueldo base","ISR", "Total Deduciones", "Total Percepciones", "Sueldo liquido"
+                "Departamento", "Nombre  empleado", "Sueldo base","ISR", "Total Deduciones", "Total Percepciones", "Sueldo liquido"
             }
         ));
         Tbl_TotalDepartamento.setModel(new javax.swing.table.DefaultTableModel(
