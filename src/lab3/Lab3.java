@@ -2,10 +2,10 @@
  * @author BRYAN ESTUARDO MAZARIEGOS DAVILA
  *  0901-17-1001
  *  Control de sueldos de los empleados en planilla y total por cada deparamento
- * prueba de actualizacion
  */
 package lab3;
 
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,11 +14,12 @@ public class Lab3 extends javax.swing.JFrame {
     /**
      * Creates new form Lab3
      */
-    private final String StrPlanilla[][] = new String[10][6];
-    private final int StrTotalDepar[][] = new int[6][2];
+    private final String StrPlanilla[][] = new String[10][7];
+    private final double StrTotalDepar[][] = new double[6][2];
+    DecimalFormat deci= new DecimalFormat("#.00");
     public Lab3() {
         initComponents();
-        setLocation(200,100);
+        setLocation(100,100);
         setResizable(false);
     }
 
@@ -138,14 +139,18 @@ public class Lab3 extends javax.swing.JFrame {
         // TODO add your handling code here:
         int IFila,ICol;
         String StrSimbolo = null;
+        double ITotalDeduciones;
+        double ISR[]= new double[2];
+        ISR[0]=0.05;
+        ISR[1]=0.07;
         //Obtenemos el modelo de la tabla en la cual vamos a trabajar
         DefaultTableModel modelo = (DefaultTableModel) Tbl_Info.getModel();
         //Creamos un arreglo de tipo Objeto donde guardaremos los datos de cada columna
-        Object[] Fila = new  Object[6];
+        Object[] Fila = new  Object[7];
         //Ciclo de llenado de la tabla o matriz
         for(IFila=0;IFila<=9;IFila++)
         {
-            for(ICol=0;ICol<=5;ICol++)
+            for(ICol=0;ICol<=6;ICol++)
             {
                 switch(ICol)
                {
@@ -163,18 +168,35 @@ public class Lab3 extends javax.swing.JFrame {
                         break;
                     case 3:
                         StrSimbolo="Q  ";
-                        StrPlanilla[IFila][ICol] = Integer.toString(llenado(1000,100));
+                        if(((Integer.parseInt(StrPlanilla[IFila][2]))>0)&&((Integer.parseInt(StrPlanilla[IFila][2]))<=2500))
+                        {
+                            double Impuesto=Double.parseDouble(StrPlanilla[IFila][2]);
+                            Impuesto*=ISR[0];
+                            StrPlanilla[IFila][ICol]= String.valueOf(deci.format(Impuesto));
+                        }
+                        else
+                        {
+                            double Impuesto=Double.parseDouble(StrPlanilla[IFila][2]);
+                            Impuesto*=ISR[1];
+                            StrPlanilla[IFila][ICol]= String.valueOf(deci.format(Impuesto));
+                        }
                         break;
                     case 4:
                         StrSimbolo="Q  ";
-                        StrPlanilla[IFila][ICol] = Integer.toString(llenado(1000,0));
+                        ITotalDeduciones=llenado(1000,100);
+                        ITotalDeduciones+=Double.parseDouble(StrPlanilla[IFila][3]);
+                        StrPlanilla[IFila][ICol] = String.valueOf(deci.format(ITotalDeduciones));
                         break;
                     case 5:
                         StrSimbolo="Q  ";
-                        int ISueldoBase = Integer.parseInt(StrPlanilla[IFila][2]);
-                        int ITotalDeduciones = Integer.parseInt(StrPlanilla[IFila][3]);
-                        int ITotalPercepciones =Integer.parseInt(StrPlanilla[IFila][4]);
-                        StrPlanilla[IFila][ICol]= Integer.toString((ISueldoBase-ITotalDeduciones)+ ITotalPercepciones);
+                        StrPlanilla[IFila][ICol] = Integer.toString(llenado(1000,0));
+                        break;
+                    case 6:
+                        StrSimbolo="Q  ";
+                        double ISueldoBase = Double.parseDouble(StrPlanilla[IFila][2]);
+                        ITotalDeduciones = Double.parseDouble(StrPlanilla[IFila][4]);
+                        double ITotalPercepciones =Double.parseDouble(StrPlanilla[IFila][5]);
+                        StrPlanilla[IFila][ICol]= String.valueOf((ISueldoBase-ITotalDeduciones)+ ITotalPercepciones);
                         break;
                }
                 Fila[ICol]=StrSimbolo+StrPlanilla[IFila][ICol];
@@ -190,7 +212,7 @@ public class Lab3 extends javax.swing.JFrame {
     private void BtnTotalDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTotalDepartamentoActionPerformed
         // TODO add your handling code here:
         int IFila=0,ICon=1;
-        int ITotales;
+        double ITotales;
         //Obtenemos el modelo de la tabla en la cual vamos a trabajar
         DefaultTableModel modelo = (DefaultTableModel) Tbl_TotalDepartamento.getModel();
         //Creamos un arreglo de tipo Objeto donde guardaremos los datos de cada columna
@@ -206,12 +228,12 @@ public class Lab3 extends javax.swing.JFrame {
         for(IFila=0;IFila<=9;IFila++)
         {
             if(StrPlanilla[IFila][0].equals(Integer.toString(ICon))){
-                StrTotalDepar[ICon][1] += Integer.parseInt(StrPlanilla[IFila][5]);
+                 StrTotalDepar[ICon][1] += Double.parseDouble(StrPlanilla[IFila][6]);
                 ITotales = StrTotalDepar[ICon][1];
             }
         }
         DatosEmp[0]= Integer.toString(ICon);
-        DatosEmp[1]= Integer.toString(ITotales);
+        DatosEmp[1]= String.valueOf(ITotales);
         ICon++;
         //agregamos el arreglo de la cada fila a la tabla
         modelo.addRow(DatosEmp);
@@ -242,7 +264,7 @@ public class Lab3 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Departamento", "Nombre  empleado", "Sueldo base", "Total Deduciones", "Total Percepciones", "Sueldo liquido"
+                 "Departamento", "Nombre  empleado", "Sueldo base","ISR", "Total Deduciones", "Total Percepciones", "Sueldo liquido"
             }
         ));
         Tbl_TotalDepartamento.setModel(new javax.swing.table.DefaultTableModel(
