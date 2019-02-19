@@ -31,7 +31,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="712" max="32767" attributes="0"/>
               <Component id="BtnLlenar" min="-2" pref="120" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="BtnTotalDepartamento" min="-2" pref="103" max="-2" attributes="0"/>
@@ -41,11 +41,12 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="1027" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="218" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="406" max="-2" attributes="0"/>
+              <EmptySpace pref="935" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,10 +60,10 @@
                   <Component id="BtnLimpiar" min="-2" pref="44" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="220" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="220" max="-2" attributes="0"/>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="260" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="260" max="-2" attributes="0"/>
+              <EmptySpace pref="78" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,18 +79,60 @@
         <Component class="javax.swing.JTable" name="Tbl_Info">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="0">
+              <Table columnCount="14" rowCount="0">
                 <Column editable="true" title="Departamento" type="java.lang.Object"/>
-                <Column editable="true" title="Nombre  empleado" type="java.lang.Object"/>
+                <Column editable="true" title="Nombre empleado " type="java.lang.Object"/>
                 <Column editable="true" title="Sueldo base" type="java.lang.Object"/>
+                <Column editable="true" title="No.horas extras" type="java.lang.Object"/>
+                <Column editable="true" title="Valor de horas extras" type="java.lang.Object"/>
+                <Column editable="true" title="Comisiones" type="java.lang.Object"/>
+                <Column editable="true" title="Total Devendago" type="java.lang.Object"/>
+                <Column editable="true" title="Bonificaciones" type="java.lang.Object"/>
+                <Column editable="true" title="IGSS" type="java.lang.Object"/>
                 <Column editable="true" title="ISR" type="java.lang.Object"/>
+                <Column editable="true" title="Anticipos" type="java.lang.Object"/>
+                <Column editable="true" title="Descuentos juridicos" type="java.lang.Object"/>
                 <Column editable="true" title="Total Deduciones" type="java.lang.Object"/>
-                <Column editable="true" title="Total Percepciones" type="java.lang.Object"/>
                 <Column editable="true" title="Sueldo liquido" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -153,7 +196,7 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="2" rowCount="0">
-                <Column editable="false" title="Departamnto" type="java.lang.Object"/>
+                <Column editable="false" title="Departamento" type="java.lang.Object"/>
                 <Column editable="false" title="Total" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -180,7 +223,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="BtnTotalDepartamento">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Calcular Total &lt;/br&gt;&#xa;Departamento"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt; Calcular Total &lt;/br&gt; Departamento"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnTotalDepartamentoActionPerformed"/>

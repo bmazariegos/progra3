@@ -5,6 +5,7 @@
  */
 package lab3;
 
+import java.awt.Color;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,13 +15,15 @@ public class Lab3 extends javax.swing.JFrame {
     /**
      * Creates new form Lab3
      */
-    private final String StrPlanilla[][] = new String[10][7];//matriz de la nomina
-    private final double StrTotalDepar[][] = new double[6][2];//matris de los totales por departamento
+    private final String StrPlanilla[][] = new String[10][14];//matriz de la nomina
+    private final double DblTotalDepar[][] = new double[6][2];//matris de los totales por departamento
     DecimalFormat deci= new DecimalFormat("#.00");//clase que controla la cantidad de decimales
     public Lab3() {
         initComponents();
         setLocation(100,100);
-        setResizable(false);
+        setExtendedState(MAXIMIZED_BOTH);
+        getContentPane().setBackground(Color.GRAY);
+        setResizable(true);
     }
 
     
@@ -46,7 +49,7 @@ public class Lab3 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Departamento", "Nombre  empleado", "Sueldo base", "ISR", "Total Deduciones", "Total Percepciones", "Sueldo liquido"
+                "Departamento", "Nombre empleado ", "Sueldo base", "No.horas extras", "Valor de horas extras", "Comisiones", "Total Devendago", "Bonificaciones", "IGSS", "ISR", "Anticipos", "Descuentos juridicos", "Total Deduciones", "Sueldo liquido"
             }
         ));
         jScrollPane1.setViewportView(Tbl_Info);
@@ -63,7 +66,7 @@ public class Lab3 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Departamnto", "Total"
+                "Departamento", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -80,7 +83,7 @@ public class Lab3 extends javax.swing.JFrame {
             Tbl_TotalDepartamento.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        BtnTotalDepartamento.setText("<html>\nCalcular Total </br>\nDepartamento");
+        BtnTotalDepartamento.setText("<html> Calcular Total </br> Departamento");
         BtnTotalDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnTotalDepartamentoActionPerformed(evt);
@@ -99,7 +102,7 @@ public class Lab3 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 712, Short.MAX_VALUE)
                 .addComponent(BtnLlenar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnTotalDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -108,10 +111,11 @@ public class Lab3 extends javax.swing.JFrame {
                 .addGap(309, 309, 309))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1027, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(935, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,10 +126,10 @@ public class Lab3 extends javax.swing.JFrame {
                     .addComponent(BtnTotalDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
@@ -141,18 +145,14 @@ public class Lab3 extends javax.swing.JFrame {
         int IFila,ICol;//variables para el llenado de la matriz
         String StrSimbolo = null;//variable para el simbolo de dinero
         double ITotalDeduciones;
-        //array que contiene los valorea de ISR a aplicar
-        double ISR[]= new double[2];
-        ISR[0]=0.05;
-        ISR[1]=0.07;
         //Obtenemos el modelo de la tabla en la cual vamos a trabajar
         DefaultTableModel modelo = (DefaultTableModel) Tbl_Info.getModel();
         //Creamos un arreglo de tipo Objeto donde guardaremos los datos de cada columna
-        Object[] Fila = new  Object[7];
+        Object[] Fila = new  Object[14];
         //Ciclo de llenado de la tabla Y matriz
         for(IFila=0;IFila<=9;IFila++)
         {
-            for(ICol=0;ICol<=6;ICol++)
+            for(ICol=0;ICol<=13;ICol++)
             {
                 switch(ICol)//el switch contola la posicion de los datos en cada columna
                {
@@ -168,33 +168,57 @@ public class Lab3 extends javax.swing.JFrame {
                         StrSimbolo="Q  ";
                         StrPlanilla[IFila][ICol] = Integer.toString(llenado(5000,2000));
                         break;
-                    case 3://opcionde calculo de ISR
+                    case 3://numero de horas extras
+                        StrSimbolo="Q  ";
+                        StrPlanilla[IFila][ICol]="250";
+                        break;
+                    case 4://valor de horas extras
+                        StrSimbolo="Q  ";
+                        StrPlanilla[IFila][ICol]="250";
+                        break;
+                    case 5://comisiones
+                        StrSimbolo="Q  ";
+                        StrPlanilla[IFila][ICol]="250";
+                        break;
+                    case 6://Suma de las percepciones del empleado
+                        StrSimbolo="Q  ";
+                        StrPlanilla[IFila][ICol] = Integer.toString(llenado(1000,0));
+                        break;
+                    case 7://bono incentivo
+                        StrSimbolo="Q  ";
+                        StrPlanilla[IFila][ICol]="250";
+                        break;
+                    case 8://IGSS
+                        StrSimbolo="Q  ";
+                        StrPlanilla[IFila][ICol]="250";
+                        break;
+                    case 9://opcionde calculo de ISR
                         StrSimbolo="Q  ";
                         //if que controla el porcentage a aplicar a cada empleado
-                        if(((Integer.parseInt(StrPlanilla[IFila][2]))>0)&&((Integer.parseInt(StrPlanilla[IFila][2]))<=2500))
+                        if(((Integer.parseInt(StrPlanilla[IFila][2]))>0)&&((Integer.parseInt(StrPlanilla[IFila][2]))<=300000))
                         {//ISR del 5%
-                            double Impuesto=Double.parseDouble(StrPlanilla[IFila][2]);
-                            Impuesto*=ISR[0];
-                            StrPlanilla[IFila][ICol]= String.valueOf(deci.format(Impuesto));
+                            CalculoISR(IFila,ICol);
                         }
                         else
-                        {//ISR del /%
-                            double Impuesto=Double.parseDouble(StrPlanilla[IFila][2]);
-                            Impuesto*=ISR[1];
-                            StrPlanilla[IFila][ICol]= String.valueOf(deci.format(Impuesto));
+                        {//ISR del 7%
+                            CalculoISR(IFila,ICol);
                         }
                         break;
-                    case 4://suma de la deduciones del empleado
+                    case 10://Anticipos
+                        StrSimbolo="Q  ";
+                        StrPlanilla[IFila][ICol]="250";
+                        break;
+                    case 11://descuentos juridicos
+                        StrSimbolo="Q  ";
+                        StrPlanilla[IFila][ICol]="250";
+                        break;
+                    case 12://suma de la deduciones del empleado
                         StrSimbolo="Q  ";
                         ITotalDeduciones=llenado(1000,100);
                         ITotalDeduciones+=Double.parseDouble(StrPlanilla[IFila][3]);
                         StrPlanilla[IFila][ICol] = String.valueOf(deci.format(ITotalDeduciones));
                         break;
-                    case 5://Suma de las percepciones del empleado
-                        StrSimbolo="Q  ";
-                        StrPlanilla[IFila][ICol] = Integer.toString(llenado(1000,0));
-                        break;
-                    case 6://suma y resta de las percecciones y de deducciones
+                    case 13://suma y resta de las percecciones y de deducciones
                         StrSimbolo="Q  ";
                         double ISueldoBase = Double.parseDouble(StrPlanilla[IFila][2]);
                         ITotalDeduciones = Double.parseDouble(StrPlanilla[IFila][4]);
@@ -223,8 +247,8 @@ public class Lab3 extends javax.swing.JFrame {
         Object[] DatosEmp = new  Object[2];
         while(IFila!=5)
         {
-        StrTotalDepar[IFila][0]=ICon;//asigna el codigo de departamento a la matriz
-        StrTotalDepar[IFila][1]=0;//pone en cero los totales por departamento
+        DblTotalDepar[IFila][0]=ICon;//asigna el codigo de departamento a la matriz
+        DblTotalDepar[IFila][1]=0;//pone en cero los totales por departamento
         IFila++;
         }
         //realiza ciclos de 1 a 5 para la sumatoria de los totales de los empleados
@@ -234,8 +258,8 @@ public class Lab3 extends javax.swing.JFrame {
         {
             //if compara en el codigo de deparatamento  de 1 a 5 y realiza la suma de los codigos iguales
             if(StrPlanilla[IFila][0].equals(Integer.toString(ICon))){
-                StrTotalDepar[ICon][1] += Double.parseDouble(StrPlanilla[IFila][6]);//realiza la suma y asinacion de los totales
-                ITotales = StrTotalDepar[ICon][1];
+                DblTotalDepar[ICon][1] += Double.parseDouble(StrPlanilla[IFila][6]);//realiza la suma y asinacion de los totales
+                ITotales = DblTotalDepar[ICon][1];
             }
         }
         DatosEmp[0]= Integer.toString(ICon);
@@ -250,6 +274,16 @@ public class Lab3 extends javax.swing.JFrame {
 
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
         // TODO add your handling code here:
+ 
+        //procediniento limpiar las matrices
+        LimpiarMatriz();
+        //procedimiento que limpiar tablas 
+        LimpiarTablas();
+        
+    }//GEN-LAST:event_BtnLimpiarActionPerformed
+
+    public void LimpiarMatriz()
+    {
         int IFila,ICol;
         //for doble realiza la limpieza de las dos matrices (StrPlanilla y  StrTotalDepar)
         for(IFila=0;IFila<=9;IFila++)
@@ -259,19 +293,22 @@ public class Lab3 extends javax.swing.JFrame {
                 StrPlanilla[IFila][ICol]="";
                 if(IFila<5)
                 {
-                    StrTotalDepar[IFila][0]= 0;
-                    StrTotalDepar[IFila][1]= 0;
+                    DblTotalDepar[IFila][0]= 0;
+                    DblTotalDepar[IFila][1]= 0;
                 }
         
             }
         }
+    }
+    public void LimpiarTablas()
+    {
         //establece los nuevos parametros con los que el usuario vera la tablas
         Tbl_Info.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Departamento", "Nombre  empleado", "Sueldo base","ISR", "Total Deduciones", "Total Percepciones", "Sueldo liquido"
+                "Departamento", "Nombre empleado ", "Sueldo base", "No.horas extras", "Valor de horas extras", "Comisiones", "Total Devendago", "Bonificaciones", "IGSS", "ISR", "Anticipos", "Descuentos juridicos", "Total Deduciones", "Sueldo liquido"
             }
         ));
         Tbl_TotalDepartamento.setModel(new javax.swing.table.DefaultTableModel(
@@ -282,8 +319,26 @@ public class Lab3 extends javax.swing.JFrame {
                 "Departamnto", "Total"
             }
         ));
-    }//GEN-LAST:event_BtnLimpiarActionPerformed
-
+    }
+    public void CalculoISR(int IFila, int ICol)
+    {
+        //array que contiene los valorea de ISR a aplicar
+        double ISR[]= new double[2];
+        ISR[0]=0.05;
+        ISR[1]=0.07;
+        double DblSueldoBase, DblRentaNeta,DblOtrasDeduciones, DblRentaImponible, DblISRProyectado;
+        double DblISRMensual;
+        int IGastosPersonles;
+        DblSueldoBase=Double.parseDouble(StrPlanilla[IFila][2]);
+        DblRentaNeta= DblSueldoBase*12;
+        IGastosPersonles=(int) (DblRentaNeta*0.8889);
+        DblOtrasDeduciones=0;
+        DblRentaImponible=DblRentaNeta-IGastosPersonles-DblOtrasDeduciones;
+        DblISRProyectado=DblRentaImponible*ISR[0];
+        DblISRMensual=DblISRProyectado/12;
+        StrPlanilla[IFila][ICol]=String.valueOf(deci.format(DblISRMensual));
+    }
+    
     /**
      * @param args the command line arguments
      */
