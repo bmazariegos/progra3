@@ -1,10 +1,23 @@
 /*
+<<<<<<< HEAD
  * Esta clase contiene todos los metodos que se le pueden aplicar a la lista
  * Bryan Estuardo Mazariegos Davila 0901-17-1001 
  */
 package ListasEnlazadas;
 
 
+=======
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ListasEnlazadas;
+
+/**
+ *
+ * @author EDUARDO
+ */
+>>>>>>> 04b68461570018bcd14dac10482627f48a7198f0
 public class ListasEnlazadas
 {
     	Nodo Primero;
@@ -71,6 +84,7 @@ public class ListasEnlazadas
 			anterior.Siguiente=actual.Siguiente;
 		}
 	}
+<<<<<<< HEAD
         public String LocalizarPosicion(String StrDato)//Retorna el valor de la posicion del dato
 	{
 		int IDato=0;
@@ -115,5 +129,7 @@ public class ListasEnlazadas
                         }
                   return(StrMensaje);
 }
+=======
+>>>>>>> 04b68461570018bcd14dac10482627f48a7198f0
 
 }
