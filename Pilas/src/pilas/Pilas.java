@@ -1,13 +1,9 @@
 /*
- * Clase que contiene el control de la pila
+ * Clase que contiene los metodos de funcionalidad de una pila
  * Bryan Estuardo Mazariegos Davila 0901-17-1001
  */
 package pilas;
 
-/**
- *
- * @author alumno
- */
 public class Pilas {
     private Nodo cabeza=null;
 	private int longitud=0;
@@ -24,7 +20,7 @@ public class Pilas {
 	{
 		cabeza=null;
 	}
-        //metodo inserta al final de la lista
+        //metodo insertar en la pila
         public void Push(Libro libro) {
 		Nodo nodo=new Nodo(libro);//crea un nodo con los datos de la clase libro
 		if (cabeza==null) {//compara que si es el principio
@@ -38,7 +34,7 @@ public class Pilas {
 		}
 		longitud++;//le suma 1 a la longitud	
 	}
-        //metodo elimina el ultino dato en la lista
+        //metodo elimina d ela pila
         public void Pop() {
             if (cabeza!= null) {
                 if (cabeza.siguiente==null) {
@@ -54,11 +50,11 @@ public class Pilas {
                 }
             }
         }
-        //metodo de mostrar (Listar) muestra los datos que contiene la lista
+        //metodo de MostrarPila muestra los datos que contiene la pila
         public String MostrarPila(){
 		String StrDato=" ";
 		Nodo aux= cabeza;
-                //hace mientras la direccion de la lista no sea igual a null
+                //hace mientras la direccion de la pila no sea igual a null
 		while (aux!=null)
 		{         //concatena los datos en el nodo en la variable dato
 			StrDato +="TITULO : " + aux.libro.getTitulo()+ "\n AUTOR : "+aux.libro.getAutor()+"\n ISBN : "+aux.libro.getIsbn()+"\n";
@@ -66,7 +62,7 @@ public class Pilas {
 		}
 		return(StrDato);//regresa lo que contiene StrDato
 	}
-        //metodo elimina el ultino dato en la lista
+        //metodo elimina obtenr y ver lo que contiene la cima
         public String Top() {
             String StrDato=" ";
             if (cabeza!= null) {
@@ -82,14 +78,14 @@ public class Pilas {
             }
             return(StrDato);
         }
-        //metodo retorna cabesa de la lista a null
+        //metodo retorna cabeza de la pila a null(borra la pila)
         public String BorrarPila() {
-            cabeza=null;//vacia la lista regresa cabeza a null
+            cabeza=null;//vacia la pila regresa cabeza a null
             return ("Pila borrada");
         }
-        //metodo retorna cabesa de la lista a null
+        //metodo para ver si la pila esta vacia
         public boolean estaVacia() {
-            return cabeza==null;//vacia la lista regresa cabeza a null
+            return cabeza==null;//compara si la pila esta vacia y retorna true si esta vacia y false si ya contiene datos
         }
     
 }

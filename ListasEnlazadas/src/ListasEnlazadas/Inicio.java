@@ -21,8 +21,9 @@ public class Inicio {
 	System.out.println(miLista.Listar());
 	System.out.println("borrar");
 
-        /*miLista.borrarUltimo();
-        miLista.borrarPrimero();*/
+        miLista.borrarUltimo();
+        //miLista.borrarPrimero();
+        miLista.borrarPosicion(0);
         System.out.println("Dato buscado: 10\n"+"Dato en la posicion:"+miLista.LocalizarPosicion("10"));
 	System.out.println("Dato a eliminar: 50\n"+miLista.BorrarDato("50"));
 
