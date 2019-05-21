@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package arbolBB;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.JPanel;
 
-/**
- *
- * @author .
- */
-
+ 
 public class ArbolBB {
 
     private Nodo raiz;
@@ -25,7 +17,8 @@ public class ArbolBB {
     }
     
     public boolean agregar(int dato) {
-        Nodo nuevo = new Nodo(dato, null, null);
+        //le elimine el null,null despues del dato
+        Nodo nuevo = new Nodo(dato);
         insertar(nuevo, raiz);
         return true;
     }
@@ -133,7 +126,7 @@ public class ArbolBB {
         return alt;
     }
     
-     public JPanel getdibujo() {
-        return new ArbolExpresionGrafico(this);
-    }
+    /*public JPanel getdibujo() {
+    return new ArbolExpresionGrafico(this);
+    }*/
 }

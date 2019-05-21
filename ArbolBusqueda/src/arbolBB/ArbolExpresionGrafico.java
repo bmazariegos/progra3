@@ -14,6 +14,7 @@ import javax.swing.*;
 public class ArbolExpresionGrafico extends JPanel 
 {
     private ArbolBB miArbol;
+    private ArbolAVL ar;
     private HashMap posicionNodos = null;
     private HashMap subtreeSizes = null;
     private boolean dirty = true;
@@ -29,9 +30,9 @@ public class ArbolExpresionGrafico extends JPanel
      * @param miExpresion: dato de tipo ArbolExpresion que contiene el Arbol a
      * dibujar.
      */
-    public ArbolExpresionGrafico(ArbolBB miArbol) 
+    public ArbolExpresionGrafico(ArbolAVL ar) 
     {
-          this.miArbol = miArbol;
+          this.ar = ar;
           this.setBackground(Color.WHITE);
           posicionNodos = new HashMap();
           subtreeSizes = new HashMap();
@@ -49,7 +50,7 @@ public class ArbolExpresionGrafico extends JPanel
     {
          posicionNodos.clear();
          subtreeSizes.clear();
-         Nodo root = this.miArbol.getRaiz();
+         Nodo root = this.ar.getRaiz();
          if (root != null) 
          {
              calcularTamañoSubarbol(root);

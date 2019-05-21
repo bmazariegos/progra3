@@ -1,4 +1,4 @@
-
+ 
 package arbolBB;
 
 import java.util.ArrayList;
@@ -12,12 +12,13 @@ import javax.swing.JPanel;
 public class SimuladorArbolBinario {
 
     ArbolBB miArbol = new ArbolBB();
+    ArbolAVL ar= new ArbolAVL();
 
     public SimuladorArbolBinario() {
     }
 
     public boolean insertar(Integer dato) {
-        return (this.miArbol.agregar(dato));
+        return (this.ar.insertar(dato));
     }
     //metodo para mostrar los recorridos del arbol
     public String preOrden() {
@@ -56,6 +57,6 @@ public class SimuladorArbolBinario {
     }
 
     public JPanel getDibujo() {
-        return this.miArbol.getdibujo();
+        return this.ar.getdibujo();
     }
 }
