@@ -10,14 +10,14 @@ package arbolBB;
  * @author
  */
 public class Nodo {
-  int dato , fe;
-  Nodo izq,der;
+  public int dato , FactorEquilibrio;
+  public Nodo SubArbolIzquierdo,subArbolderecho;
 
-    public Nodo(int d) {
-        this.dato = d;
-        this.fe = 0;
-        this.izq = null;
-        this.der = null;
+    public Nodo(int dato, Nodo izq , Nodo der) {
+        this.dato = dato;
+        this.FactorEquilibrio = 0;
+        this.SubArbolIzquierdo = izq;
+        this.subArbolderecho = der;
     }
 
     
@@ -31,19 +31,19 @@ public class Nodo {
     }
 
     public Nodo getIzq() {
-        return izq;
+        return SubArbolIzquierdo;
     }
 
     public void setIzq(Nodo izq) {
-        this.izq = izq;
+        this.SubArbolIzquierdo = izq;
     }
 
     public Nodo getDer() {
-        return der;
+        return subArbolderecho;
     }
 
     public void setDer(Nodo der) {
-        this.der = der;
+        this.subArbolderecho = der;
     }
  
 }
