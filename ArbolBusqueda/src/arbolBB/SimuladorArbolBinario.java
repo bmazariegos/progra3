@@ -56,7 +56,7 @@ public class SimuladorArbolBinario {
         return (r);
     }
 
-    public JPanel getDibujo() {
-        return this.ar.getdibujo();
-    }
+    /*public JPanel getDibujo() {
+    return this.ar.getdibujo();
+    }*/
 }
